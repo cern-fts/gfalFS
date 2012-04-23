@@ -1,0 +1,6 @@
+The Grid File Access Library 2.0 that offers a POSIX interface to the distributed files system supported by WLCG.
+
+Official documentation : https://svnweb.cern.ch/trac/lcgutil/wiki/gfal2
+
+gfalFS provides a solution to mount any distributed file system managed \
+by GFAL 2.0 permitting easy interactions with a large set of distributed file systems. 
