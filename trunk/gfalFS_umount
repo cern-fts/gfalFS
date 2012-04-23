@@ -1,9 +1,0 @@
-#!/bin/bash
-## script to umount gfalFS points
-#
-if [[ "x$1" == "x" || "$2x" != "x" ]]
-then
-	echo -e " Usage $0 [gfalFS_mount_point] \n"
-	exit 1
-fi
-fusermount -u $1
