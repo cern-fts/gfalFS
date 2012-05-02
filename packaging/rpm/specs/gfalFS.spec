@@ -49,5 +49,5 @@ make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
-* Mon Nov 14 2011 Adrien Devress <adevress at cern.ch> - 1.0.0-2beta1
+* Mon Nov 14 2011 Adrien Devress <adevress at cern.ch> - 1.0.0-0.2.2012041515snap
  - Initial gfalFS 1.0 preview release
