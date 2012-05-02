@@ -1,34 +1,32 @@
-/*
- * Copyright (c) Members of the EGEE Collaboration. 2004.
- * See http://www.eu-egee.org/partners/ for details on the copyright holders.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright @ Members of the EMI Collaboration, 2010.
+// See www.eu-emi.eu for details on the copyright holders.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License"); 
+// you may not use this file except in compliance with the License. 
+// You may obtain a copy of the License at 
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0 
+// 
+// Unless required by applicable law or agreed to in writing, software 
+// distributed under the License is distributed on an "AS IS" BASIS, 
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+// See the License for the specific language governing permissions and 
+// limitations under the License.
 
-/**
- * @file gfal_opers.c
- * @brief file for the mapping of the gfal operators
- * @author Devresse Adrien
- * @version 0.1
- * @date 2/07/2011
+/*
+ * gfal_opers.c
+ * map of the gfal operators
+ * author Devresse Adrien
  * */
  
 #define _GNU_SOURCE
 
-#include <gfal_api.h>
+#include <string.h>
 #include <errno.h>
 
-#include <string.h>
+#include <gfal_api.h>
+
+
 #include "gfal_opers.h"
 #include "gfal_ext.h"
 
@@ -139,7 +137,7 @@ static int gfalfs_opendir(const char * path, struct fuse_file_info * f){
 		gfal_posix_clear_error();
 		return ret;	
 	}
-	f->fh= gfalFS_dir_handle_new((void*)i, buff);
+	f->fh= (uint64_t) gfalFS_dir_handle_new((void*)i, buff);
 	if(fuse_interrupted())
 		return -(ECANCELED);
 	return (i!= NULL)?0:-(gfal_posix_code_error());
