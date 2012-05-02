@@ -38,10 +38,13 @@ do_rec_resolution(){
 get_attrs_spec(){
 	export PKG_VERSION="$( grep "Version:" $1 | sed 's@Version:\(.*\)@\1@g' )"
 	export PKG_NAME="$( grep "Name:" $1 | sed 's@Name:\(.*\)@\1@g' )"
+	export PKG_SOURCE="$( grep "Source0:" $1 | sed 's@Source0:\(.*\)@\1@g' )"
 	do_rec_resolution "PKG_VERSION" $PKG_VERSION $1
 	do_rec_resolution "PKG_NAME" $PKG_NAME $1
-	export SRC_NAME="$PKG_NAME-$PKG_VERSION.tar.gz"
-	echo "res : $SRC_NAME $PKG_VERSION $PKG_NAME"
+	do_rec_resolution "PKG_SOURCE" $PKG_SOURCE $1
+	export PKG_SOURCE="$( echo $PKG_SOURCE | awk -F/ '{print $NF'})"
+	export SRC_NAME="$PKG_SOURCE"
+	echo "res : $SRC_NAME $PKG_VERSION $PKG_NAME $PKG_SOURCE"
 }
 
 # src_dir, tarbal_filepath
