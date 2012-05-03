@@ -44,6 +44,7 @@ make DESTDIR=%{buildroot} install
 %defattr (-,root,root)
 %{_bindir}/gfalFS
 %{_bindir}/gfalFS_umount
+%{_mandir}/man1/*
 %{_docdir}/%{name}-%{version}/DESCRIPTION
 %{_docdir}/%{name}-%{version}/VERSION
 %{_docdir}/%{name}-%{version}/LICENSE
