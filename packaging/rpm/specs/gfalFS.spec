@@ -3,11 +3,11 @@
 Name:				gfalFS
 Version:			1.0.0
 Release:			0.2.%{checkout_tag}%{?dist}
-Summary:			filesystem client based on gfal 2.0
+Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
 License:			ASL 2.0
 URL:				https://svnweb.cern.ch/trac/lcgutil/wiki/gfal2
-# svn export http://svn.cern.ch/guest/lcgutil/wlcggridfs/trunk gfalfs
+# svn export http://svn.cern.ch/guest/lcgutil/gfalFS/trunk gfalFS
 Source0:			http://grid-deployment.web.cern.ch/grid-deployment/dms/lcgutil/tar/%{name}/%{name}-%{version}-%{checkout_tag}.tar.gz
 BuildRoot:			%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
@@ -25,19 +25,20 @@ the user can seamlessly interact with grid and cloud storage systems just
 as if they were local files.
 
 %clean
-rm -rf "$RPM_BUILD_ROOT";
+rm -rf %{buildroot};
 make clean
 
 %prep
 %setup -q
 
 %build
-%cmake -DDOC_INSTALL_DIR=%{_docdir}/%{name}-%{version} .
+%cmake \
+-DDOC_INSTALL_DIR=%{_docdir}/%{name}-%{version} .
 make %{?_smp_mflags}
 
 %install
-rm -rf "$RPM_BUILD_ROOT"; 
-make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
+rm -rf %{buildroot}; 
+make DESTDIR=%{buildroot} install
 
 %files
 %defattr (-,root,root)

@@ -1,0 +1,94 @@
+.\" @(#)$RCSfile: gfalFS.man,v $ $Revision: 1.0 $ $Date: 2012/04/15 13:54:45 $ CERN Adrien Devresse
+.\" Copyright (C) 2012-2013 by CERN/IT/GT/DMS
+.\" ASL-2.0
+.\" All rights reserved
+.\"
+.TH gfalFS 1 "Date: 2012/04/15 15:00:00 " gfalFS "Filesystem client based on GFAL 2.0"
+.SH NAME
+\fBgfalFS\fR  - Filesystem client based on GFAL 2.0
+
+.SH SYNOPSIS
+\fB mounting : \fR 
+.PP		
+	\fB gfalFS [options] mntdir remote_url \fR 
+.PP	
+\fB unmounting : \fR 
+.PP	
+	\fB gfalFS_umount mntdir \fR 
+	              
+.SH DESCRIPTION
+\fBgfalFS\fR is a filesystem based on FUSE capable of operating on remote storage
+systems managed by GFAL 2.0. 
+.PP
+This include the common file access protocols in lcg ( \fB SRM, GRIDFTP, DCAP, RFIO, LFN, \fR ...). 
+.PP
+The practical effect is that the user can seamlessly interact with grid and cloud storage systems just 
+as if they were local files.
+.PP	
+	https://svnweb.cern.ch/trac/lcgutil/wiki/gfal2
+	https://svnweb.cern.ch/trac/lcgutil/wiki/gfalFS
+.PP		
+The protocol support depends directly of the GFAL 2.0 plugin installation.
+
+.SH OPTIONS
+.PP
+\fB\-d\fR
+.RS 5
+debug mode - does not act anymore like a daemon and print usefull information about the current operations\&. 
+.RE
+.PP
+.RE
+\fB\-g\fR
+.RS 5
+guid mode - access directly to the file by the guid name on the current lfc\&.
+.RE
+.PP
+\fB\-s\fR
+.RS 5
+single thread mode - Use only one thread to execute the operations, 
+this cause a major slowdown of the execution but guarantee a protection against thread safety problems.
+.RE
+.PP
+\fB\-v\fR
+.RS 5
+enable verbose mode - print more informations about the current execution, can be use with \fB\-d\fR in case of problems \&. 
+.RE	
+.PP
+\fB\-V\fR
+.RS 5
+print the version number\&. 
+.RE
+	   
+.SH EXAMPLES
+.PP
+\fB Mount an SRM directory with transparent file operations : \fR 
+.P		
+	mkdir ~/my_mnt/
+.P
+	gfalFS ~/my_mnt -d -v srm://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+.P
+	echo "Hello world" > ~/my_mnt/hello; cat ~/my_mnt/hello; cp ~/my_mnt/hello /tmp/test_hello;
+.P
+
+\fB Mount an GRIDFTP directory and create a directory : \fR 		
+.P
+	gfalFS ~/my_mnt gsiftp://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+.P
+	mkdir ~/my_mnt/testdir; stat ~/my_mnt/testdir; 
+.P	
+	gfalFS_umount ~/my_mnt/
+.P
+\fB Mount an LFC directory and list a directory : \fR 		
+.P
+	gfalFS ~/my_mnt lfn://grid/dteam
+.P
+	/bin/ls ~/my_mnt;
+	
+
+.SH SEE ALSO
+.BR syslog (3),
+.BR gfal2 (3)
+
+
+.SH AUTHORS
+Adrien Devresse <adrien.devresse@cern.ch>, Jean-Philippe Baud.
