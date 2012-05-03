@@ -1,4 +1,4 @@
-%define checkout_tag 2012041515snap
+%define checkout_tag 2012050202snap
 
 Name:				gfalFS
 Version:			1.0.0
@@ -50,5 +50,8 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
-* Mon Nov 14 2011 Adrien Devress <adevress at cern.ch> - 1.0.0-0.2.2012041515snap
+* Thu May 03 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-0.2.2012050202snap
+ - improve global EPEL compliance.
+
+* Mon Nov 14 2011 Adrien Devresse <adevress at cern.ch> - 1.0.0-0.2.2012041515snap
  - Initial gfalFS 1.0 preview release
