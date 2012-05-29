@@ -489,6 +489,18 @@ static int gfalfs_rmdir(const char* path){
 	return i;		
 }
 
+
+int gfalfs_fake_fgetattr (const char * url, struct stat * st, struct fuse_file_info * f){
+	if(f->flags & O_CREAT){
+		gfalfs_log(NULL, G_LOG_LEVEL_MESSAGE ," fgetattr create mode, bypass and set to default, speed hack");
+		memset(st,0,sizeof(struct stat));
+		st->st_mode = S_IFREG | 0666;
+	}else{
+		gfalfs_log(NULL, G_LOG_LEVEL_MESSAGE ," fgetattr other mode");
+		return gfalfs_getattr(url, st);
+	}
+}
+
 struct fuse_operations gfal_oper = {
     .getattr	= gfalfs_getattr,
     .readdir	= gfalfs_readdir,
@@ -510,6 +522,7 @@ struct fuse_operations gfal_oper = {
     .symlink= gfalfs_symlink,
     .setxattr = gfalfs_setxattr,
     .getxattr= gfalfs_getxattr,
+    .fgetattr = gfalfs_fake_fgetattr,
     .listxattr= gfalfs_listxattr,
     .readlink = gfalfs_readlink,
     .unlink = gfalfs_unlink
