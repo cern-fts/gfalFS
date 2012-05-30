@@ -1,8 +1,8 @@
-%define checkout_tag 2012050202snap
+%global checkout_tag 20120503010snap
 
 Name:				gfalFS
 Version:			1.0.0
-Release:			0.2.%{checkout_tag}%{?dist}
+Release:			0.3.%{checkout_tag}%{?dist}
 Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
 License:			ASL 2.0
@@ -51,6 +51,10 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
+* Thu May 03 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-0.3.20120503010snap
+ - bug correction with fgetattr on gsiftp / srm file system
+ - minor changes applied from the fedora review comments
+
 * Thu May 03 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-0.2.2012050202snap
  - improve global EPEL compliance.
 

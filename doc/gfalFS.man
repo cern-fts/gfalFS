@@ -8,13 +8,13 @@
 \fBgfalFS\fR  - Filesystem client based on GFAL 2.0
 
 .SH SYNOPSIS
-\fB mounting : \fR 
+\fB mounting \fR 
 .PP		
-	\fB gfalFS [options] mntdir remote_url \fR 
+	    gfalFS [options] mntdir remote_url 
 .PP	
 \fB unmounting : \fR 
 .PP	
-	\fB gfalFS_umount mntdir \fR 
+	    gfalFS_umount mntdir 
 	              
 .SH DESCRIPTION
 \fBgfalFS\fR is a filesystem based on FUSE capable of operating on remote storage
