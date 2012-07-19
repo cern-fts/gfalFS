@@ -491,7 +491,7 @@ static int gfalfs_rmdir(const char* path){
 
 
 int gfalfs_fake_fgetattr (const char * url, struct stat * st, struct fuse_file_info * f){
-	if(f->flags & O_CREAT){
+    if(f->flags & O_CREAT && (strncmp(mount_point, "srm",3) ==0 ||strncmp(mount_point, "gsiftp",5) ==0 )){ // tmp hack for srm & gsiftp consistency
 		gfalfs_log(NULL, G_LOG_LEVEL_MESSAGE ," fgetattr create mode, bypass and set to default, speed hack");
 		memset(st,0,sizeof(struct stat));
 		st->st_mode = S_IFREG | 0666;
