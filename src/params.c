@@ -68,7 +68,7 @@ static inline void gfalfs_log_debug(const char* prefix, const char* format, va_l
  */
 inline void gfalfs_log (const gchar *log_domain, GLogLevelFlags log_level,
 					 const gchar *format, ...){
-	if( log_level & ( G_LOG_LEVEL_WARNING | G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL)  ){
+    if( log_level & ( G_LOG_LEVEL_WARNING | G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_MESSAGE) && verbose_mode ){
 		va_list va;
 		va_start(va, format);
 		vsyslog(LOG_WARNING, format, va);
@@ -76,16 +76,7 @@ inline void gfalfs_log (const gchar *log_domain, GLogLevelFlags log_level,
 		va_start(va, format);
 		gfalfs_log_debug("[WARNING]", format, va);
 		va_end(va);
-	}else if( (log_level & G_LOG_LEVEL_MESSAGE) && verbose_mode){
-		va_list va;
-		va_start(va, format);
-		vsyslog(LOG_INFO, format, va);
-		va_end(va);
-		va_start(va, format);
-		gfalfs_log_debug("[MESSAGE]",format, va);
-		va_end(va);	
-	}
-			 
+    }
 						 
 }
 
