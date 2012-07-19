@@ -495,6 +495,7 @@ int gfalfs_fake_fgetattr (const char * url, struct stat * st, struct fuse_file_i
 		gfalfs_log(NULL, G_LOG_LEVEL_MESSAGE ," fgetattr create mode, bypass and set to default, speed hack");
 		memset(st,0,sizeof(struct stat));
 		st->st_mode = S_IFREG | 0666;
+        return 0;
 	}else{
 		gfalfs_log(NULL, G_LOG_LEVEL_MESSAGE ," fgetattr other mode");
 		return gfalfs_getattr(url, st);
