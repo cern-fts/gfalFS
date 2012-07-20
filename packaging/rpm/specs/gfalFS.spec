@@ -1,14 +1,13 @@
-%global checkout_tag 20120503010snap
 
 Name:				gfalFS
 Version:			1.0.0
-Release:			0.3.%{checkout_tag}%{?dist}
+Release:			1%{?dist}
 Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
 License:			ASL 2.0
 URL:				https://svnweb.cern.ch/trac/lcgutil/wiki/gfal2
 # svn export http://svn.cern.ch/guest/lcgutil/gfalFS/trunk gfalFS
-Source0:			http://grid-deployment.web.cern.ch/grid-deployment/dms/lcgutil/tar/%{name}/%{name}-%{version}-%{checkout_tag}.tar.gz
+Source0:			http://grid-deployment.web.cern.ch/grid-deployment/dms/lcgutil/tar/%{name}/%{name}-%{version}.tar.gz
 BuildRoot:			%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:		cmake
@@ -51,6 +50,10 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
+* Fri Jul 20 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-1
+ - initial 1.0 release
+ - include bug fix for srm and gsiftp url for fgettr
+
 * Thu May 03 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-0.3.20120503010snap
  - bug correction with fgetattr on gsiftp / srm file system
  - minor changes applied from the fedora review comments
