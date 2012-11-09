@@ -127,7 +127,8 @@ static void parse_args(int argc, char** argv, int* targc, char** targv){
 
 int main(int argc, char *argv[])
 {   
-	g_thread_init(NULL);
+    if (!g_thread_supported())
+        g_thread_init(NULL);
 	int targc = 1;
 	char* targv[20];
 	targv[0] = argv[0]; 
