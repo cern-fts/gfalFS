@@ -1,7 +1,7 @@
 
 Name:				gfalFS
 Version:			1.0.0
-Release:			1%{?dist}
+Release:			2%{?dist}
 Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
 License:			ASL 2.0
