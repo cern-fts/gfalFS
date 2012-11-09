@@ -15,6 +15,7 @@ BuildRequires:		gfal2-devel
 BuildRequires:		fuse-devel
 
 Requires:			fuse%{?_isa}
+Provides:                       gfal2-fuse = %{version}
 
 %description
 gfalFS is a filesystem based on FUSE capable of operating on remote storage
