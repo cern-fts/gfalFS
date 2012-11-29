@@ -1,7 +1,7 @@
 
 Name:				gfalFS
-Version:			1.0.0
-Release:			2%{?dist}
+Version:			1.0.1
+Release:			0%{?dist}
 Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
 License:			ASL 2.0
@@ -51,6 +51,10 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
+* Thu Nov 29 2012 Adrien Devresse <adevress at cern.ch> - 1.0.1-0
+ - fix a 32 bits off_t size problem with gfal 2.1
+
+
 * Fri Jul 20 2012 Adrien Devresse <adevress at cern.ch> - 1.0.0-1
  - initial 1.0 release
  - include bug fix for srm and gsiftp url for fgettr
