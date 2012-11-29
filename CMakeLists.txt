@@ -45,7 +45,7 @@ include_directories("src/" ${GLIB2_PKG_INCLUDE_DIRS}
 						 ${FUSE_PKG_INCLUDE_DIRS})
 add_definitions( -D_GFALFS_VERSION=\"${VERSION_STRING}\" ${GLIB2_PKG_CFLAGS}
 				${GTHREAD2_PKG_CFLAGS} ${GFAL2_PKG_CFLAGS} ${FUSE_PKG_CFLAGS} 
-				-D_LARGEFILE64_SOURCE )
+				-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 )
 
 add_executable(gfalFS ${src_main})
 target_link_libraries(gfalFS ${GLIB2_PKG_LIBRARIES} 
