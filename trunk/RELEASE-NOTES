@@ -1,0 +1,150 @@
+Trunk
+-
+
+* Thu Nov 29 2012 Adrien Devresse <adevress at cern.ch> - 1.0.1-0
+ - fix a 32 bits off_t size problem with gfal 2.1 
+
+
+2012-01-19 11:26  adevress
+
+	* CMakeLists.txt: -correct permissions problem on umoutn script
+
+2012-01-19 11:17  adevress
+
+	* packaging/rpm/specs/gfalFS.spec: - suppress some rpmlint warnings
+
+2012-01-19 11:12  adevress
+
+	* DESCRIPTION, LICENSE, README, VERSION: -adding missing doc files
+
+2012-01-19 10:55  adevress
+
+	* CMakeLists.txt, cmake, cmake/modules,
+	  cmake/modules/CMakeGeneratePkgConfig.cmake,
+	  cmake/modules/CMakeMacroParseArguments.cmake,
+	  cmake/modules/CMakeStringHelpers.cmake,
+	  cmake/modules/DefineInstallationPaths.cmake,
+	  cmake/modules/FindCGSI_GSOAP.cmake, cmake/modules/FindDCAP.cmake,
+	  cmake/modules/FindDPM.cmake, cmake/modules/FindLFC.cmake,
+	  cmake/modules/FindgSOAP.cmake, cmake/modules/MacroCopyFile.cmake,
+	  cmake/modules/ReleaseDebugAutoFlags.cmake: -add missing files for
+	  cmake release
+
+2012-01-19 10:50  adevress
+
+	* packaging/bin/packager_rpm.sh, packaging/rpm/specs/gfalFS.spec,
+	  src/main.c: -convert to cmake, add doc files
+
+2012-01-19 10:14  adevress
+
+	* packaging/rpm/specs/gfalFS.spec: - modify spec fiel for epel
+	  compliance
+
+2012-01-19 08:41  adevress
+
+	* SConstruct: -correct gfal2 pkgconfig name
+
+2011-12-14 20:47  adevress
+
+	* packaging/rpm/specs/gfalFS.spec: - correct attribute error in
+	  spec file
+	  -add missing file
+
+2011-12-14 20:47  adevress
+
+	* packaging/rpm/specs/gfalFS.spec, src/gfal_opers.c: - add missing
+	  file in the spec file
+
+2011-12-12 16:13  adevress
+
+	* SConstruct: -make a clean on the dependencies
+
+2011-12-12 16:09  adevress
+
+	* SConstruct, packaging/rpm/specs/gfalFS.spec: -add an epel variant
+	  build
+
+2011-12-12 15:55  adevress
+
+	* packaging/bin/packager_rpm.sh, packaging/rpm/specs/gfalFS.spec:
+	  -update the generator script
+	  - improve the EPEL compliance of the spec file
+
+2011-11-25 10:08  adevress
+
+	* SConstruct, packaging, packaging/bin,
+	  packaging/bin/packager_rpm.sh, packaging/rpm,
+	  packaging/rpm/specs, packaging/rpm/specs/gfalFS.spec: -add
+	  initial EPEL compliant spec file
+
+2011-10-27 07:12  adevress
+
+	* SConstruct: -change version number :
+	  - pread/pwrite support validated
+
+2011-10-26 09:16  adevress
+
+	* src/gfal_ext.c, src/gfal_opers.c, src/main.c: -switch from
+	  read/write to pread/pwrite
+
+2011-09-30 08:47  adevress
+
+	* SConstruct, src/gfal_opers.c: - add support for setxattr
+	  - change version log
+
+2011-09-22 12:56  adevress
+
+	* SConstruct: -update version number
+
+2011-09-22 12:55  adevress
+
+	* SConstruct, gfalFS_umount, src/gfal_ext.c, src/gfal_ext.h: -add
+	  umount cmd
+
+2011-09-21 14:44  adevress
+
+	* src/gfal_ext.c, src/gfal_ext.h, src/gfal_opers.c, src/main.c,
+	  src/params.c: - improve readdir management
+
+2011-09-20 15:47  adevress
+
+	* src/gfal_ext.c, src/gfal_opers.c, src/gfal_opers.h, src/main.c,
+	  src/params.c, src/params.h: -refactor error report for perfs
+
+2011-09-20 08:17  adevress
+
+	* src/gfal_ext.c, src/gfal_ext.h, src/params.c, src/params.h: -add
+	  files for extended fiel handle management
+
+2011-09-19 13:21  adevress
+
+	* src/gfal_opers.c, src/gfal_opers.h, src/main.c: -add fix for
+	  massive read/write
+
+2011-09-12 16:25  adevress
+
+	* src/gfal_opers.c, src/main.c: -correct a bug on read/write funcs
+
+2011-09-09 09:14  adevress
+
+	* src/gfal_opers.c, src/gfal_opers.h, src/main.c: -add trace on
+	  debug mode
+
+2011-08-18 19:26  adevress
+
+	* SConstruct, package_generator.sh: -add the package generator
+	  - modify the build script for package generation and install
+
+2011-08-18 15:26  adevress
+
+	* SConstruct: -add a fuse path
+
+2011-08-18 14:57  adevress
+
+	* SConstruct: modify build script for etics
+
+2011-08-17 14:14  adevress
+
+	* ., SConstruct, src, src/gfal_opers.c, src/gfal_opers.h,
+	  src/main.c: add the initial for wlcggridfs
+
