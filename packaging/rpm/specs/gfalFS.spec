@@ -1,6 +1,6 @@
 
 Name:				gfalFS
-Version:			1.0.1
+Version:			1.2.0
 Release:			0%{?dist}
 Summary:			Filesystem client based on GFAL 2.0
 Group:				Applications/Internet
@@ -51,6 +51,9 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/README
 
 %changelog
+* Wed Mar 20 2013 Adrien Devresse <adevress at cern.ch> - 1.2.0-0
+ - fix a EIO problem with the gfal 2.0 http plugin 
+
 * Thu Nov 29 2012 Adrien Devresse <adevress at cern.ch> - 1.0.1-0
  - fix a 32 bits off_t size problem with gfal 2.1
 
