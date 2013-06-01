@@ -322,7 +322,10 @@ static int gfalfs_getxattr (const char * path, const char *name , char *buff, si
 	int ret;	
 	int i = gfal_getxattr(buff_path, name, buff, s_buff);
 	if( i < 0 ){
-		const int errcode = gfal_posix_code_error();
+        int errcode = gfal_posix_code_error();
+        if(errcode == EPROTONOSUPPORT) // silent the non supported errors
+            errcode = ENOATTR;
+
 		if(errcode != ENOATTR) // suppress verbose error for ENOATTR for perfs reasons
 			gfalfs_log(NULL, G_LOG_LEVEL_WARNING , "gfalfs_getxattr err %d for path %s: %s ", (int) errcode, (char*) buff_path, (char*) gfal_posix_strerror_r(err_buff, 1024));
 		ret = -(errcode);
