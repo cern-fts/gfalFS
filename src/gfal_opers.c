@@ -99,7 +99,9 @@ static int gfalfs_getattr(const char *path, struct stat *stbuf)
 		gfalfs_log(NULL, G_LOG_LEVEL_WARNING , "gfalfs_getattr error %d for path %s: %s ", (int) gfal_posix_code_error(), (char*)buff, (char*)gfal_posix_strerror_r(err_buff, 1024));
 		gfal_posix_clear_error();
 		return ret;
-	}
+    }else{
+        gfalfs_tune_stat(stbuf);
+    }
 	if(fuse_interrupted())
 		return -(ECANCELED);
     return a;

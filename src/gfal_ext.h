@@ -62,3 +62,6 @@ int gfalFS_file_handle_write(gfalFS_file_handle handle, const char *buf, size_t 
 
 int gfalFS_file_handle_read(gfalFS_file_handle handle, const char *buf, size_t size, off_t offset);
 
+
+void gfalfs_tune_stat(struct stat * st);
+
