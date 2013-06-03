@@ -88,7 +88,7 @@ static void parse_args(int argc, char** argv, int* targc, char** targv){
 			case 'V':
 				print_version();
 				exit(1);
-        case 'o':
+            case 'o':
                 // fuse options
                 break;
 			case '?':
