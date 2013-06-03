@@ -51,6 +51,7 @@ static void print_help(char* progname){
 	g_printerr("      %s [-g]           [mount_point]             \n", progname);
 	g_printerr("\t [-d] : Debug mode 					          \n");	
 	g_printerr("\t [-s] : Single thread mode			          \n");	
+    g_printerr("\t [-o] : pass fuse specific option  			  \n");
 	g_printerr("\t [-g] : Guid mode, without grid url		      \n");
 	g_printerr("\t [-v] : Verbose mode, log all events with syslog, can cause major slowdown \n");
 	g_printerr("\t [-V] : Print version number \n");
@@ -63,7 +64,7 @@ static void print_version(){
 static void parse_args(int argc, char** argv, int* targc, char** targv){
 	int c;
 	char abs_path[2048];
-	while( (c = getopt(argc, argv, "dshgvV"))  != -1){
+    while( (c = getopt(argc, argv, "dshgvVo:"))  != -1){
 		switch(c){
 			case 'd':
 				gfalfs_set_debug_mode(TRUE);
@@ -87,6 +88,9 @@ static void parse_args(int argc, char** argv, int* targc, char** targv){
 			case 'V':
 				print_version();
 				exit(1);
+        case 'o':
+                // fuse options
+                break;
 			case '?':
 				g_printerr("Unknow option -%c \n", optopt);
 				print_help(argv[0]);
