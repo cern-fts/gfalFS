@@ -1,9 +1,16 @@
-Trunk
-* Wed Mar 20 2013 Adrien Devresse <adevress at cern.ch> - 1.2.0-0
+Trunk :
+
+ 1.4.0-0
+ - correct getxattr problem when getxattr is not supported by the underlying protocol
+ - add -o option description
+ - tuning for block size n case of "cp" usage
+
+
+ 1.2.0-0
  - fix a EIO problem with the gfal 2.0 http plugin 
 
 
-* Thu Nov 29 2012 Adrien Devresse <adevress at cern.ch> - 1.0.1-0
+1.0.1-0
  - fix a 32 bits off_t size problem with gfal 2.1 
 
 
