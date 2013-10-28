@@ -5,30 +5,28 @@
 .\"
 .TH gfalFS 1 "Date: 2012/04/15 15:00:00 " gfalFS "Filesystem client based on GFAL 2.0"
 .SH NAME
-\fBgfalFS\fR  - Filesystem client based on GFAL 2.0
+\fBgfalFS\fR  - Filesystem client for the GFAL 2.0 toolkit
 
 .SH SYNOPSIS
-\fB mounting \fR 
+\fB Mount \fR
 .PP		
 	    gfalFS [options] mntdir remote_url 
 .PP	
-\fB unmounting : \fR 
+\fB Umount \fR
 .PP	
 	    gfalFS_umount mntdir 
 	              
 .SH DESCRIPTION
-\fBgfalFS\fR is a filesystem based on FUSE capable of operating on remote storage
-systems managed by GFAL 2.0. 
-.PP
-This include the common file access protocols in lcg ( \fB SRM, GRIDFTP, DCAP, RFIO, LFN, \fR ...). 
-.PP
-The practical effect is that the user can seamlessly interact with grid and cloud storage systems just 
-as if they were local files.
-.PP	
-	https://svnweb.cern.ch/trac/lcgutil/wiki/gfal2
-	https://svnweb.cern.ch/trac/lcgutil/wiki/gfalFS
+\fBgfalFS\fR is a filesystem allowing to mount any resources supported by the GFAL 2.0 toolkit.
+.br
+This include any resources accessible by the following protocol : \fB WebDav/HTTP, xrootd, SRM, GridFTP, dCAP, LFC, RFIO... \fR
+.br
+Please refer to the GFAL 2.0 documentation for the complete list of supported protocols.
+.br
+The user can seamlessly interacts with grid and cloud storage systems just
+as if they are local files.
 .PP		
-The protocol support depends directly of the GFAL 2.0 plugin installation.
+The protocol support depends directly of the GFAL 2.0 plugin configuration.
 
 .SH OPTIONS
 .PP
@@ -61,33 +59,62 @@ print the version number\&.
 	   
 .SH EXAMPLES
 .PP
-\fB Mount an SRM directory with transparent file operations : \fR 
-.P		
-	mkdir ~/my_mnt/
+\fB Mount an WebDav over https directory and execute a directory listing
+.BR
 .P
-	gfalFS ~/my_mnt -d -v srm://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+        mkdir ~/my_mnt/
+.BR
+        gfalFS ~/my_mnt davs://lxfsra04a04.cern.ch/dpm/cern.ch/
+.BR
+        /bin/ls ~/my_mnt
+.BR
 .P
-	echo "Hello world" > ~/my_mnt/hello; cat ~/my_mnt/hello; cp ~/my_mnt/hello /tmp/test_hello;
+\fB Mount a local folder in debug mode and execute a directory listing
+.P
+        mkdir ~/my_mnt/
+.BR
+        gfalFS ~/my_mnt -v -d file:///etc/
+.BR
+        /bin/ls ~/my_mnt
+.BR
 .P
 
-\fB Mount an GRIDFTP directory and create a directory : \fR 		
+\fB Mount an SRM directory with transparent file operations
+.P		
+        gfalFS ~/my_mnt srm://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+.BR
+        echo "Hello world" > ~/my_mnt/hello
+.BR
+        cat ~/my_mnt/hello
+.BR
+        cp ~/my_mnt/hello /tmp/test_hello
+.BR
 .P
-	gfalFS ~/my_mnt gsiftp://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+\fB Mount an GRIDFTP directory and create a directory
 .P
-	mkdir ~/my_mnt/testdir; stat ~/my_mnt/testdir; 
+        gfalFS ~/my_mnt gsiftp://cvitbdpm1.cern.ch/dpm/cern.ch/home/dteam/
+.BR
+        mkdir ~/my_mnt/testdir
+.BR
+        stat ~/my_mnt/testdir
 .P	
-	gfalFS_umount ~/my_mnt/
+\fB Mount an LFC directory and list the replicas of a file
 .P
-\fB Mount an LFC directory and list a directory : \fR 		
+        gfalFS ~/my_mnt lfn://grid/dteam \fR
+        getfattr -n user.replicas ~/my_mnt/test_file \fR
 .P
-	gfalFS ~/my_mnt lfn://grid/dteam
+\fB Unmount an existing gfalFS mount point \fR
 .P
-	/bin/ls ~/my_mnt;
-	
+        gfalFS_umount ~/my_mnt/
+.P
 
 .SH SEE ALSO
 .BR syslog (3),
-.BR gfal2 (3)
+.BR gfal2 (3),
+.BR
+
+.SH LINKS
+.BR https://svnweb.cern.ch/trac/lcgutil/wiki/gfalFS
 
 
 .SH AUTHORS

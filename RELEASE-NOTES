@@ -1,9 +1,10 @@
 Trunk :
 
- 1.4.0-0
+ 1.4.0-2
  - correct getxattr problem when getxattr is not supported by the underlying protocol
  - add -o option description
  - tuning for block size n case of "cp" usage
+ - Documentation update
 
 
  1.2.0-0
