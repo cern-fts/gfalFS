@@ -20,6 +20,7 @@
  * */
  
 #include <errno.h>
+#include <math.h>
 #include <string.h>
 
 #include <gfal_api.h>
@@ -102,4 +103,6 @@ void* gfalFS_dir_handle_get_fd(gfalFS_dir_handle handle){
 void gfalfs_tune_stat(struct stat * st){
     // tune block size to 16Mega for cp optimization with big files on network file system
     st->st_blksize = (1 <<24);
+    // workaround for utilities like du that use st_blocks (LCGUTIL-289)
+    st->st_blocks = ceil(st->st_size / 512.0);
 }
