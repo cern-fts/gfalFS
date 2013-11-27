@@ -100,7 +100,7 @@ print the version number\&.
 .P	
 \fB Mount an LFC directory and list the replicas of a file
 .P
-        gfalFS ~/my_mnt lfn://grid/dteam \fR
+        gfalFS ~/my_mnt lfc://prod-lfc-shared-central.cern.ch/grid/dteam \fR
         getfattr -n user.replicas ~/my_mnt/test_file \fR
 .P
 \fB Unmount an existing gfalFS mount point \fR
