@@ -31,14 +31,13 @@ static const char* str_version = _GFALFS_VERSION;
 
      
 static void path_to_abspath(const char* path, char* abs_buff, size_t s_buff){
-	char cdir[2048];
+    char cdir[2048]= {0};
 	if(path == NULL || *path=='\0'){
 		memset(abs_buff,'\0', s_buff);
 		return;
 	}
 	if(*path!='/'){
-		getcwd(cdir, 2048);
-		g_strlcpy(abs_buff, cdir, s_buff);
+        g_strlcpy(abs_buff, getcwd(cdir, 2048), s_buff);
 		g_strlcat(abs_buff, "/",s_buff);
 		g_strlcat(abs_buff, path,s_buff);		
 	}else

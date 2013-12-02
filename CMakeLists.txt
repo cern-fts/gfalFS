@@ -50,7 +50,7 @@ add_definitions( -D_GFALFS_VERSION=\"${VERSION_STRING}\" ${GLIB2_PKG_CFLAGS}
 add_executable(gfalFS ${src_main})
 target_link_libraries(gfalFS ${GLIB2_PKG_LIBRARIES} 
 						${GTHREAD2_PKG_LIBRARIES} ${GFAL2_PKG_LIBRARIES}
-						 ${FUSE_PKG_LIBRARIES})
+                                                 ${FUSE_PKG_LIBRARIES} m)
 
 
 
