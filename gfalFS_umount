@@ -1,9 +1,47 @@
 #!/bin/bash
 ## script to umount gfalFS points
 #
-if [[ "x$1" == "x" || "$2x" != "x" ]]
-then
-	echo -e " Usage $0 [gfalFS_mount_point] \n"
-	exit 1
-fi
-fusermount -u $1
+
+function help() {
+    echo -e "Usage: gfalFS_umount [options] mount-point"
+    echo -e " -h\tprint help"
+    echo -e " -V\tprint fusermount version"
+    echo -e " -q\tquiet"
+    echo -e " -z\tlazy umount"
+    exit 0;
+}
+
+function fuse_version() {
+    fusermount -V
+    exit $?
+}
+
+FLAGS=()
+
+for option; do
+    case $option in
+        -h)
+            help
+            ;;
+        -V)
+            fuse_version
+            ;;
+        -q|-z)
+            FLAGS+=($option)
+            ;;
+        -*)
+            echo "Unknown option $option";
+            help
+            ;;
+        *)
+            MOUNT_POINT=$option
+    esac
+done
+
+if [ -z "$MOUNT_POINT" ]; then
+    echo "Missing mount point"
+    exit 1
+fi;
+
+fusermount -u ${FLAGS[@]} ${MOUNT_POINT}
+
