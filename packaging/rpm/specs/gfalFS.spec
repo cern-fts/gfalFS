@@ -49,6 +49,7 @@ make DESTDIR=%{buildroot} install
 %{_docdir}/%{name}-%{version}/VERSION
 %{_docdir}/%{name}-%{version}/LICENSE
 %{_docdir}/%{name}-%{version}/README
+%{_docdir}/%{name}-%{version}/readme.html
 
 %changelog
 * Mon Oct 28 2013 adevress at cern.ch - 1.4.0-3

@@ -69,5 +69,5 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/doc/gfalFS.man
 
 
 #install doc license
-install(FILES "LICENSE" "README" "VERSION" "DESCRIPTION"
+install(FILES "LICENSE" "README" "VERSION" "DESCRIPTION" "readme.html"
 			DESTINATION ${DOC_INSTALL_DIR})

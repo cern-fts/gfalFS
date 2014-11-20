@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>gfalFS</title>
+		<style type="text/css">
+		html {
+			background: gray;
+			display: table;
+			margin: auto;
+			margin-top: 1em;
+		}
+		body {
+			display: table-cell;
+			background: white;
+			width: 80ex;
+			padding: 1em 4ex;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>gfalFS</h1>
+		
+		<h2>Description</h2>
+		<p>
+			gfalFS is a FUSE module for GFAL 2.0. gfalFS is able to mount any point of the CERN's stockage systemnbsp;like a local folder.
+		</p>
+		
+		<h2>Install and configure</h2>
+		<p>
+			On Scientific Linux, Fedora or Enterprise Linux:
+		</p>
+		<ul>
+			<li>Enable the EPEL repository</li>
+			<li>sudo yum install gfal2-all gfalFS</li>
+			<li>sudo usermod -a -G fuse [my login name]</li>
+			<li>su [my login name] (or log out and log in again)</li>
+			<li>gfalFS /my_mount_point [my url]</li>
+		</ul>
+		
+		<h2>Checkout the code</h2>
+		<dl>
+			<dt>Registered</dt>
+			<dd>svn co https://svn.cern.ch/reps/lcgutil/gfalFS/trunk</dd>
+			<dt>Anonymous</dt>
+			<dd>svn co http://svn.cern.ch/guest/lcgutil/gfalFS/trunk</dd>
+		</dl>
+		
+		<h2>Example</h2>
+		<pre># mkdir ~/mount_tmp 
+# gfalFS ~/mount_tmp lfc://prod-lfc-shared-central.cern.ch/grid/dteam
+# ls ~/mount_tmp/
+# cat ~/mount_tmp/testread0011
+# gfalFS_umount ~/mount_tmp</pre>
+		
+		<h2>License</h2>
+		<p>
+			CGSI-gSOAP is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2 License</a>.
+			See <a href="LICENSE">LICENSE</a> for details.
+		</p>
+		
+		<h2>Release Notes</h2>
+		<p>
+			See <a href="RELEASE-NOTES">RELEASE-NOTES</a> for a detailed changelog.
+		</p>
+		
+		<h2>Contact</h2>
+		<p>
+			You can notify bugs or ask for feature requests via
+		</p>
+		<dl>
+			<dt>Tracker</dt>
+			<dd><a href="https://its.cern.ch/jira/browse/DMC/component/10812">https://its.cern.ch/jira/browse/DMC/component/10812</a></dd>
+			<dt>Mailing list</dt>
+			<dd><a href="mailto:dmc-support@cern.ch">dmc-support@cern.ch</a></dd>
+		</dl>
+	</body>
+</html>
